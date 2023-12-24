@@ -16,6 +16,7 @@ exports.StudentController = void 0;
 const common_1 = require("@nestjs/common");
 const student_service_1 = require("./student.service");
 const student_dto_1 = require("./dto/student.dto");
+const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let StudentController = class StudentController {
     constructor(studentService) {
         this.studentService = studentService;
@@ -35,12 +36,14 @@ let StudentController = class StudentController {
 };
 exports.StudentController = StudentController;
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], StudentController.prototype, "getAllstudent", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -48,6 +51,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], StudentController.prototype, "getAllstudentById", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -55,6 +59,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], StudentController.prototype, "editStudent", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

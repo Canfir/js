@@ -16,6 +16,8 @@ exports.UniversityController = void 0;
 const common_1 = require("@nestjs/common");
 const university_service_1 = require("./university.service");
 const university_dto_1 = require("./dto/university.dto");
+const common_2 = require("@nestjs/common");
+const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let UniversityController = class UniversityController {
     constructor(universityService) {
         this.universityService = universityService;
@@ -32,12 +34,14 @@ let UniversityController = class UniversityController {
 };
 exports.UniversityController = UniversityController;
 __decorate([
+    (0, common_2.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UniversityController.prototype, "getAlluniversities", null);
 __decorate([
+    (0, common_2.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -45,6 +49,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UniversityController.prototype, "editUniversity", null);
 __decorate([
+    (0, common_2.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

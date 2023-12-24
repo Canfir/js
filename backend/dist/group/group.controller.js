@@ -16,6 +16,7 @@ exports.GroupController = void 0;
 const common_1 = require("@nestjs/common");
 const group_service_1 = require("./group.service");
 const group_dto_1 = require("./dto/group.dto");
+const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let GroupController = class GroupController {
     constructor(groupService) {
         this.groupService = groupService;
@@ -36,6 +37,7 @@ let GroupController = class GroupController {
 };
 exports.GroupController = GroupController;
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Get)(),
     __param(0, (0, common_1.Query)('code')),
     __metadata("design:type", Function),
@@ -43,6 +45,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], GroupController.prototype, "getAllGroups", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -50,6 +53,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], GroupController.prototype, "getAllGroupsByCode", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -57,6 +61,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], GroupController.prototype, "editGroup", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
